@@ -1,5 +1,5 @@
-`Hello World in Rust <https://github.com/eschnett/hello.rs>`__
-==============================================================
+Hello World in Rust
+===================
 
 |Build Status| |Coverage Status|
 
