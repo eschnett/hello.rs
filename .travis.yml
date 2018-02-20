@@ -1,10 +1,23 @@
 language: rust
+rust:
+  - stable
 
 cache: cargo
 
-after_success: |
+# Install dependencies
+install: |
+  cargo build --verbose
   if [ "$TRAVIS_RUST_VERSION" = stable ]; then
-    # bash <(curl https://raw.githubusercontent.com/xd009642/tarpaulin/master/travis-install.sh)
     cargo install cargo-tarpaulin
+  fi
+
+# Build and test
+script:
+  cargo build --verbose
+  cargo test --verbose
+
+after_success: |
+  # Upload coverage
+  if [ "$TRAVIS_RUST_VERSION" = stable ]; then
     cargo tarpaulin --ciserver travis-ci --coveralls $TRAVIS_JOB_ID
   fi
