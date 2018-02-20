@@ -13,8 +13,8 @@ install: |
 
 # Build and test
 script:
-  cargo build --verbose
-  cargo test --verbose
+  - cargo build --verbose
+  - cargo test --verbose
 
 after_success: |
   # Upload coverage
