@@ -1,14 +1,18 @@
+# Tarpaulin requires sudo to disable ASLR while measuring coverage
+sudo: required
+dist: trusty
+
 language: rust
 rust:
   - stable
 
-cache: cargo
+cache: .cargo
 
 # Install dependencies
 install: |
   cargo build --verbose
   if [ "$TRAVIS_RUST_VERSION" = stable ]; then
-    cargo install --force cargo-tarpaulin
+    cargo install cargo-tarpaulin
   fi
 
 # Build and test
